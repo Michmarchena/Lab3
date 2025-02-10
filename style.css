@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+.container {
+    display: grid;
+    width: 90%;
+    max-width: 800px;
+    gap: 5px;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 20px;
+    border: 2px solid #fff;
+}
+.a { background-color: orange; }
+.b { background-color: yellow; color: black; }
+.c { background-color: pink; }
+.d { background-color: lightblue; }
+
+/* Estilo para escritorio */
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+    }
+    .a { grid-column: 1; grid-row: 1; }
+    .b { grid-column: 2; grid-row: 1; }
+    .c { grid-column: 3; grid-row: 1; }
+    .d { grid-column: 1 / span 3; grid-row: 2; }
+}
+/* Estilo para tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "a d"
+            "b d"
+            "c d";
+    }
+    .a { grid-area: a; }
+    .b { grid-area: b; }
+    .c { grid-area: c; }
+    .d { grid-area: d; }
+}
+
+@media (max-width: 767px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+}
